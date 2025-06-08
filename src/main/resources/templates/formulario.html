@@ -15,26 +15,40 @@
 <h1 th:text="${estudiante.id == null} ? 'Nuevo Estudiante' : 'Editar Estudiante'" class="mb-4"></h1>
 <form th:action="@{/estudiantes/guardar}" th:object="${estudiante}" method="post" class="row g-3">
     <input type="hidden" th:field="*{id}" />
+
     <div class="mb-3">
         <label class="form-label">Nombre:</label>
-        <input type="text" th:field="*{nombre}" class="form-control" required />
+        <input type="text" th:field="*{nombre}" class="form-control"
+               th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'" />
+        <div class="invalid-feedback" th:errors="*{nombre}"></div>
     </div>
+
     <div class="mb-3">
         <label class="form-label">Apellido:</label>
-        <input type="text" th:field="*{apellido}" class="form-control" required />
+        <input type="text" th:field="*{apellido}" class="form-control"
+               th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid'" />
+        <div class="invalid-feedback" th:errors="*{apellido}"></div>
     </div>
+
     <div class="mb-3">
         <label class="form-label">Correo:</label>
-        <input type="email" th:field="*{correo}" class="form-control" required />
+        <input type="email" th:field="*{correo}" class="form-control"
+               th:classappend="${#fields.hasErrors('correo')} ? 'is-invalid'" />
+        <div class="invalid-feedback" th:errors="*{correo}"></div>
     </div>
+
     <div class="mb-3">
         <label class="form-label">Carrera:</label>
-        <input type="text" th:field="*{carrera}" class="form-control" required />
+        <input type="text" th:field="*{carrera}" class="form-control"
+               th:classappend="${#fields.hasErrors('carrera')} ? 'is-invalid'" />
+        <div class="invalid-feedback" th:errors="*{carrera}"></div>
     </div>
+
     <div class="mb-3">
         <button type="submit" class="btn btn-cafe">Guardar</button>
         <a th:href="@{/estudiantes}" class="btn btn-secondary">Cancelar</a>
     </div>
 </form>
+
 </body>
 </html>

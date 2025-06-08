@@ -29,15 +29,18 @@ public class EstudianteController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(@Valid @ModelAttribute Estudiante estudiante, BindingResult result) {
-        if (result.hasErrors()) return "formulario";
+    public String guardar(@Valid @ModelAttribute Estudiante estudiante, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "formulario";
+        }
         servicio.guardar(estudiante);
         return "redirect:/estudiantes";
     }
 
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, Model model) {
-        model.addAttribute("estudiante", servicio.buscar(id));
+        Estudiante estudiante = servicio.buscar(id);
+        model.addAttribute("estudiante", estudiante);
         return "formulario";
     }
 

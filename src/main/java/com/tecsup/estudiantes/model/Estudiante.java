@@ -1,7 +1,8 @@
 package com.tecsup.estudiantes.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Estudiante {
